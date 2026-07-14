@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+<body>
+    <h2 id="myId">A h2 element</h2>
+    <a href="#">A Hyperlink </a>
+    <br>
+    <a href="#">A 2nd Hyperlink </a>
+
+    <p class="pClass">first new paragraph!</p>
+    <p class="pClass">new second paragraph!</p>
+    <!-- <a href="#">A 2nd anhcor tag </a> -->
+
+    <script>
+        // querySelectorAll
+        let PClassAll = document.querySelectorAll('.pClass')
+
+        // querySelector
+        let fPClass = document.querySelector('.pClass')
+
+        // access elements by className (htmlCollection)
+        let pClasses = document.getElementsByClassName('pClass')
+
+        // access elements by tag (htmlCollection)
+        let collAnchors = document.getElementsByTagName('a')
+        collAnchors[1].textContent = "A 2nd anhcor tag"
+        
+        // access element by id
+        let h2 = document.getElementById('myId')
+        console.log(h2.innerHTML)
+        // h2.innerHTML = "<i>newly assigned innerhtml(content)</i>"
+        h2.textContent = "<i>newly assigned innerhtml(content)<i>"
+
+
+
+
+        // console.log(document.title)
+
+    </script>
+</body>
+</html>

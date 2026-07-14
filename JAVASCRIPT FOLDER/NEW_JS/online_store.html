@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Online Music & Movie Store</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f7f7f7; }
+        header { background: #282c34; color: white; padding: 16px 24px; }
+        .page { max-width: 1000px; margin: 24px auto; padding: 0 16px; }
+        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 18px; margin-bottom: 24px; }
+        .card { background: white; padding: 12px; border-radius: 10px; box-shadow: 0 1px 8px rgba(0,0,0,.1); text-align: center; cursor: pointer; }
+        .card img { width: 100%; height: 180px; object-fit: cover; border-radius: 10px; }
+        .card h3 { margin: 12px 0 8px; font-size: 1rem; }
+        .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px; }
+        .actions button { flex: 1 1 120px; border: none; background: #3b82f6; color: white; padding: 12px; border-radius: 8px; cursor: pointer; }
+        .actions button:hover { background: #2563eb; }
+        .form-panel { background: white; padding: 18px 20px; border-radius: 12px; box-shadow: 0 1px 10px rgba(0,0,0,.08); margin-bottom: 24px; }
+        .form-panel h2 { margin-top: 0; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+        .form-row label { display: block; font-weight: 600; margin-bottom: 4px; }
+        .form-row input { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; }
+        .form-row.full { grid-column: 1 / -1; }
+        .submit-row { text-align: right; }
+        .submit-row button { min-width: 140px; }
+        .history-panel { background: #fff; padding: 16px 18px; border-radius: 12px; border: 1px solid #ddd; }
+        .history-panel ul { padding-left: 18px; margin: 0; }
+0020
+        .history-panel li { margin-bottom: 6px; word-break: break-word; font-size: 0.95rem; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Online Music & Movie Store</h1>
+        <p>Browse CDs and DVDs, open details, validate credit cards, and navigate through the store.</p>
+    </header>
+
+    <div class="page">
+        <section>
+            <h2>Available Movies & CDs</h2>
+            <div class="gallery" id="gallery"></div>
+        </section>
+
+        <section class="actions">
+            <button id="prevBtn">Previous</button>
+            <button id="nextBtn">Next</button>
+            <button id="topBtn">Top</button>
+            <button id="bottomBtn">Bottom</button>
+            <button id="showHistoryBtn">Show History</button>
+        </section>
+
+        <section class="form-panel">
+            <h2>Checkout Details</h2>
+            <form id="paymentForm">
+                <div class="form-row full">
+                    <label for="cardHolder">Cardholder Name</label>
+                    <input type="text" id="cardHolder" name="cardHolder" placeholder="Jane Doe" required />
+                </div>
+                <div class="form-row">
+                    <div>
+                        <label for="cardNumber">Card Number</label>
+                        <input type="text" id="cardNumber" name="cardNumber" placeholder="1234 5678 9012 3456" required />
+                    </div>
+                    <div>
+                        <label for="expiry">Expiry Date</label>
+                        <input type="month" id="expiry" name="expiry" required />
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div>
+                        <label for="cvv">CVV</label>
+                        <input type="password" id="cvv" name="cvv" maxlength="4" placeholder="123" required />
+                    </div>
+                    <div>
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="you@example.com" required />
+                    </div>
+                </div>
+                <div class="submit-row">
+                    <button type="submit">Validate & Proceed</button>
+                </div>
+0020
+            </form>
+        </section>
+
+        <section class="history-panel" id="historyPanel" style="display:none;">
+            <h2>Visited Product History</h2>
+            <ul id="historyList"></ul>
+        </section>
+    </div>
+
+    <script src="online_store.js"></script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas</title>Canvas
+</head>
+<body>
+    <h2>Canvas</h2>
+     
+    <canvas style="border: 1px solid black" width = 600 height = 500></canvas>
+    <link rel="icon" type="image/jpg" href="../workplace.jpg">
+
+    <script>
+        let canvasElem = document.querySelector('canvas')
+        let ctx = canvasElem.getContext('2d')
+        // fill vs stroke
+
+        // filled rect
+        ctx.beginPath()
+        ctx.strokeStyle = 'red'
+        ctx.lineWidth = 3
+        ctx.fillStyle = 'dodgerblue'
+        ctx.fillRect(14, 12, 80, 80) // ink
+        ctx.strokeRect(10, 8, 100, 100) // ink
+        ctx.clearRect(100, 18, 100, 50)
+
+        //stroked rectangle
+
+        // line drawing
+        ctx.beginPath()
+        ctx.moveTo(120, 8)
+        ctx.lineTo(220, 100)
+        ctx.strokeStyle = 'red'
+        ctx.lineWidth = 4
+        ctx.lineCap = 'round'
+        ctx.stroke() // ink method
+
+        // ARC
+        ctx.beginPath()
+        ctx.arc( 100, 290, 90, 0, 1.5*Math.PI)
+        ctx.strokeStyle = 'red'
+        // do a fill too :)
+        ctx.stroke()
+    </script>
+</body>
+</html>
