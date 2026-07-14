@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Intro</title>
+    <style>
+        /* grouping selector */
+        p, div {
+            /* prop:val = declaration */
+            color: blue; 
+            font-size: 150%;
+        }
+        
+        h2 {
+            background: dodgerblue;
+            width: 50%;
+        }
+        
+        /* div {
+            height: 200px;
+            border: 1px solid black;
+            } */
+            /* simple selectors */
+            section {
+                height: 200px;
+                border: 1px solid black;
+                line-height:200px;
+            }
+            
+            p.pClass1 {
+                color: red;
+            }
+            
+            .pClass2 {
+                font-size: 30px;
+            }
+            
+            p#pId {
+                text-align: center;
+            color: gold
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        </style>
+
+        <link href="my.css" rel="stylesheet">
+</head>
+<body>
+    <!-- <h2>Welcome to CSS</h2> -->
+
+    <p>This is a paragraph</p>
+    <p class="pClass1 pClass2">My Second paragraph</p>
+    <main class="pClass1">my main element</main>
+    <p id="pId" class="pClass1">My third paragraph</p>
+    <div>
+        <section>My section</section>
+    </div>
+    
+</body>
+</html>

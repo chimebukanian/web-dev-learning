@@ -1,0 +1,28 @@
+
+div {
+    text-transform: uppercase
+}
+
+p {
+    background-color: dodgerblue;
+    /* color: white; */
+    /* font-size: 20px */
+}
+
+/* 
+create a web page that styles 
+a div element as follows:
+
+inline css:
+font-size: 30px;
+color: white
+
+ 
+
+internal css:
+background-color: rgb(9, 250, 21);
+
+external css
+text-transform: uppercase;
+width: 50%;
+*/

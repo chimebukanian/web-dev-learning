@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="background-color: dodgerblue; padding: 20px;">
+        <p style="background-color: aliceblue; padding: 20px;">paragraph element</p>
+    </div>
+
+    <script>
+        document.querySelector('div').addEventListener('click',
+         function(){ alert("DIV CLICKED")},
+         true
+        )
+
+        document.querySelector('p').addEventListener('click',
+            function() { alert('Paragraph clicked')},
+            true
+        )
+
+    </script>
+</body>
+</html>

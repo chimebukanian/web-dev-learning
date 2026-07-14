@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex Items</title>
+
+    <style>
+        #container {
+            display: flex;
+            background: #f1f1f1;
+            padding: 20px;
+            height: 200px
+        }
+
+
+        #container div {
+            background: dodgerblue;
+            padding: 15px;
+            margin: 8px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="container">
+        <!-- flex-grow: proportion of increment in relation with other flex items -->
+        <!-- flex-shrink: proportion of  decrement in relation with other flex items -->
+         <!-- flex-basis: initial length for a particular item  -->
+        <!-- flex: flex-grow flex-shrink flex-basis (short-hand for the above 3) -->
+
+        <div style="order: 3; flex-basis: 200px">item 1</div>
+        <div style="order: 1; flex-shrink: 3; align-self: center">item 2</div>
+        <div style="order: 2; flex-grow: 3;">item 3</div>
+        <div style="order: 4; flex: 2 0 150px">item 4</div>
+    </div>
+    
+</body>
+</html>

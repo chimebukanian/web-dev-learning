@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    div {
+        background-color: red;
+        padding: 20px;
+        width: 200px;
+    }
+
+</style>
+<body>
+
+    <div onmouseover="console.log('moused over')"></div>
+    <p></p>
+
+    <form id="myForm" name="myForm">
+        <input placeholder="Name" name="name" value="kamsi">
+        <br>
+        <input placeholder="Email">
+        <br>
+        <input placeholder="Password">
+        <br>
+        <input type="button" onclick="func()" value="number of elements in form">
+    </form>
+
+    <script>
+        let nameInp = document.querySelector('input')
+        nameInp.addEventListener('keydown', function(event) {
+            console.log(`key: ${event.code}`)
+        })
+        
+        let divElem = document.querySelector('div')
+        divElem.addEventListener('mouseout', function() {
+            console.log("MOused out!")
+        })
+
+        let parElem = document.querySelector('p')
+        document.addEventListener("mousemove", function(evObj) {
+            parElem.innerHTML = `Pos X: ${evObj.clientX} <br> Pos Y: ${evObj.clientY}`
+        })
+
+        function func() {
+            // let form = document.getElementById("myForm")
+            let myForm = document.forms["myForm"]
+            let valName = myForm["name"]
+            alert(valName.value)
+
+            // document.write(`<br> <h2>${form.length}</h2>`)
+        }
+    </script>
+</body>
+</html>
