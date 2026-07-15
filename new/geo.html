@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeoLocation</title>
+</head>
+<body>
+    
+    <div></div>
+    <button onclick="geo()">Get Location</button>
+
+    <div id="googleMap" style="width:100%;height:400px;"></div>
+
+    <script>
+        let divPos = document.querySelector('div')
+        let divMap = document.getElementById('googleMap')
+        
+        let id = navigator.geolocation.watchPosition(successCb, errHandler)
+        clearWatch(id)
+        
+        function geo() {
+            if (navigator.geolocation) {
+
+                navigator.geolocation.getCurrentPosition(successCb,
+                errHandler, 
+                {enableHighAccuracy: true, maximumAge: 5000, timeout: 4000})
+                
+            } else {
+                divPos.innerHTML = "Geolocation is not supported in this browser!"
+            }
+        }
+        
+        
+        function successCb(position) {
+            let longitude = position.coords.longitude
+            let latitude = position.coords.latitude
+            
+            divPos.innerHTML = `Longitude is ${longitude} latitude is: ${latitude}`
+            let myLatLng = new google.maps.LatLng(latitude, longitude)
+
+            let mapProps = {center: myLatLng, zoom: 5, mapTypeId: google.maps.mapTypeId.HYBRID }
+            let googleMap = new google.maps.Map(divMap, mapProps)
+
+            let marker = new Marker({position: myLatLng, map: googleMap, title: "aptech lekki"})
+        }
+        
+        function errHandler(error) {
+            switch (error.code) {
+                case error.PERMISSION_DENIED:
+                    divPos.innerHTML = "Permission Denied: " + error.message
+                    break;
+                    case error.TIMEOUT:
+                        divPos.innerHTML = "Network timed out: " + error.message
+                        break;
+                        case error.POSITION_UNAVAILABLE:
+                            divPos.innerHTML = "Position is unavailable: " + error.message
+                            break;
+                        }
+                    }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY&callback=myMap"></script>
+</body>
+</html>
