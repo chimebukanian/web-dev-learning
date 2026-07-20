@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS  ANIMATIONS</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background: red;
+            /* animations */
+            animation-name: myAnim;
+            animation-duration: 5s;
+            animation-delay: 0.5s;
+            animation-iteration-count: 2; /* infinite */
+            animation-timing-function: ease-out; /* linear, ease, ease-in, ease-out, ease-in-out*/
+            animation-direction: alternate-reverse; /* normal, alternate, reverse, alternate-reverse */
+            animation-fill-mode: both; /* both, forwards, backwards, none */
+            position: relative;
+            
+
+        }
+
+        /* keyframes */
+        @keyframes myAnim {
+            0% {
+                background-color: red;
+                left: 0px;
+                top: 0px;
+
+            }
+            25% {
+                background-color: orange;
+                top: 0px;
+                left: 200px;
+                
+            }
+            50% {
+                background-color: yellow;
+                top: 200px;
+                left: 200px;
+            }
+            75% {
+                background-color: blue;
+                top: 200px;
+                left: 0px;
+            }
+            100% {
+                background-color: green;
+                top: 0px;
+                left: 0px;  
+            }
+            /* from {
+                background-color: red;
+            }
+            to {
+                background-color: yellow;
+            } */
+        }
+    </style>
+</head>
+<body>
+    <h2>CSS Animations</h2>
+
+    <div></div>
+</body>
+</html>

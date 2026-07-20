@@ -1,0 +1,119 @@
+<!-- 
+PRACTICE:
+1. ON THE TABLE (PICTURE ATTACHED), EVEN ROWS BACKGROUND COLOR: #D6EEEE
+2. FIRST AND LAST COL SHOULD HAVE SAME BACKGROUND COLOR: #D6EEEE
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tables HTML</title>
+
+    <style>
+        table, th, td {
+            border: 2px dashed rgb(151, 25, 25);
+
+            border-collapse: collapse;
+        }
+
+        th, td {
+             vertical-align: bottom; /* vertical alignment */
+             padding: 14px;
+             text-align: center; /* horizontal alignment */
+        }
+        /* tr:nth-child(odd) {
+            background-color: #D6EEEE;
+        } */
+    </style>
+    
+</head>
+<body>
+    
+    <table border="1" >
+        <tr>
+            <th>Manufacturer</th>
+            <th>Model</th>
+            <th>Price</th>
+        </tr>
+
+        <tr>
+            <th rowspan="3">Audi</th>
+            <td>A4</td>
+            <td>34.5</td>
+        </tr>
+        <tr>
+           <td>A5</td> 
+           <td>42.6</td> 
+        </tr>
+        <tr>
+            <td>A6</td>
+            <td>30.75</td>
+        </tr>
+        <tr>
+            <th rowspan="2">BMW</th>
+            <td>328i</td>
+            <td>28.25</td>
+        </tr>
+        <tr>
+            <td>530d</td>
+            <td>47.5</td>
+        </tr>
+    </table>
+    
+    <br>
+    <table border="1">
+        <tr>
+            <th colspan="2">IT</th>
+            <th colspan="2">Accounts</th>
+        </tr>
+        
+        <tr>
+            <th>Name</th>
+            <th>Location</th>
+            <th>Name</th>
+            <th>Location</th>
+        </tr>
+
+        <tr>
+            <td>Dave</td>
+            <td>NYC</td>
+            <td>John</td>
+            <td>London</td>
+        </tr>
+        <tr>
+            <td>Kath</td>
+            <td>New jersey</td>
+            <td>Peter</td>
+            <td>LA</td>
+        </tr>
+    </table>
+    <br>
+    <table  border="1" >
+        <caption>Individuals</caption>
+        <colgroup>
+            <col span="1" style="background-color: #D6EEEE;">
+            <col span="1" >
+            <col span="1" style="background-color: #D6EEEE;">
+        </colgroup>
+        <tr>
+            <th style="width: 100px;">Name</th>
+            <th>Age</th>
+            <th>Place</th>
+        </tr>
+
+        <tr>
+            <td>Mark</td>
+            <td>30</td>
+            <td>Madrid</td>
+        </tr>
+
+        <tr>
+            <td>David</td>
+            <td>20</td>
+            <td>Lagos</td>
+        </tr>
+    </table>
+</body>
+</html>

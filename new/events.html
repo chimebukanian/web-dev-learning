@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <h3>My form</h3>
+        <input placeholder="Name" onselect="setFontStyle(this)" onblur="hideStyle(this)" onfocus="showStyle(this)"/>
+
+        <script>
+            function hideStyle(elem) {
+                elem.style.backgroundColor = "#ffffff"
+
+            }
+            function showStyle(elem) {
+                elem.style.backgroundColor = "#ffffcc"
+            }
+
+            function setFontStyle(elem) {
+                elem.style.fontFamily = 'Arial'
+                elem.style.fontWeight = 'bold'
+            }
+        </script>
+    </form>
+</body>
+</html>
