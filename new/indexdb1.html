@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let db
+        const employeeData = [
+        //   {
+        //     name: "John Smith",
+        //     email: "john@company.com"
+        //   },
+          {
+            name: "Jill Patrick",
+            email: "jill@company.com"
+          },
+          {
+            name: "Rock Ethan",
+            email: "rock@company.com"
+          },
+          {
+            name: "Daniel Andrew",
+            email: "daniel@company.com"
+          }
+        ];
+
+        let openReq = indexedDB.open('aptechdb', 1)
+        
+        
+        openReq.onerror = function() {
+            console.log("Error happened..")
+        }
+        
+        openReq.onupgradeneeded = function(event) {
+            db = event.target.result // this is DB!
+            
+            if (!db.objectStoreNames.contains("students")) {
+                let store = db.createObjectStore("students", {keyPath: "id", autoIncrement: true})
+                
+                store.createIndex('email', 'email', {unique: true})
+                
+                console.log("students' object store created!")
+            }
+            
+        }
+        
+        openReq.onsuccess = function(event) {
+            console.log('Open request successfully completed!')
+            db = event.target.result // this is DB!
+
+            // transactions: used to perform operations: addtions, retrievals, delete, update
+            let employee1 =   {
+                  name: "John Smith",
+                  email: "john@company.com"
+            }
+    
+            let tx = db.transaction('students', 'readwrite')
+            let studStore = tx.objectStore('students')
+    
+            // addition request
+            // let addReq = studStore.add(employee1)
+    
+            // addReq.onsuccess = function(event) {
+            //     let successRes = event.target.result
+            //     console.log(successRes)
+            // }
+
+            // addReq.onerror = function(event) {
+            //     console.log("Error while adding data")
+            // }
+
+            for (let employee of employeeData) {
+                if (!studStore.index('email').get(employee.email)) {
+               studStore.put(employee)
+                }
+             }
+
+            // retrieval request
+            let getReq = studStore.get(1)
+            let employeeGot
+            getReq.onsuccess = function (event) {
+                
+                employeeGot = event.target.result
+            
+                
+                // Update
+                employeeGot.name = "samuel emmanuel"
+                
+                let updateReq = studStore.put(employeeGot)
+                
+                updateReq.onsuccess = function(event) {
+                    console.log("Record updated successfully!")
+                }
+            }
+
+            // get by index
+            let index = studStore.index('email')
+
+            let getIndReq = index.get('john@company.com')
+
+            getIndReq.onsuccess = function(event) {
+                console.log(event.target.result)
+            }
+
+            // cursor: is used to retrieve multiple records
+            let students = []
+            let cursorReq = studStore.openCursor()
+
+            cursorReq.onsuccess = function(event) {
+                let cursor = event.target.result
+                
+
+                if (cursor) {
+                    studentre.delete(4)
+s.push(cursor.value)
+
+                    cursor.continue()
+                }
+                
+                console.log(students)
+
+            }
+            
+
+            // deletion
+            let delReq = studSto
+            delReq.onsuccess = function(event) {
+                console.log("Record deleted successfully!")
+            }
+
+            
+        }
+
+
+        // promise is an object for working with asynchronous  operations
+        // states: pending, settled (fulfilled, rejected)
+
+        // setTimeout()
+
+    </script>
+</body>
+</html>
