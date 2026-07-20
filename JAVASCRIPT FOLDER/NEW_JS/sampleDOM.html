@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document examples</title>
+</head>
+<body>
+    <img id="theImg" alt="download.jfif" src="../download.jfif" width="200" height="200">
+    <br>
+    <input value="download.jfif" id="inpId" disabled>
+
+    <br>
+    <button onclick="toggleImg()">Toggle images</button>
+
+    <script>
+        function toggleImg() {
+            let img = document.getElementById("theImg")
+            let inputElem = document.querySelector('input')
+
+            if (img.alt == 'download.jfif') {
+                img.src = '../workplace.jpg'
+                img.alt = 'workplace.jpg'
+                inputElem.value = 'workplace.jpg'
+            } else {
+                img.src = '../download.jfif'
+                img.alt = 'download.jfif'
+                inputElem.value =  'download.jfif'
+            }
+        }
+    </script>
+</body>
+</html>

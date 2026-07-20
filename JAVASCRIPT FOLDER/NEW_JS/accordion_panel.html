@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Accordion Panel Demo</title>
+    <style>
+        body { margin: 0; font-family: Arial, sans-serif; background: #f3f4f6; display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+        .panel-wrapper { width: min(520px, 100%); }
+        .panel { background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 35px rgba(15, 23, 42, 0.12); }
+        .panel-header { display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; cursor: pointer; }
+        .panel-header h1 { margin: 0; font-size: 1.25rem; }
+        .toggle-button { border: none; background: #2563eb; color: white; padding: 12px 18px; border-radius: 10px; cursor: pointer; }
+0020
+        .toggle-button:hover { background: #1d4ed8; }
+        .panel-body { padding: 0 24px 24px; line-height: 1.65; color: #334155; }
+        .panel-body.expanded { max-height: 600px; opacity: 1; visibility: visible; transition: max-height 0.4s ease, opacity 0.4s ease;
+        }
+        .panel-body.collapsed { max-height: 0; opacity: 0; visibility: hidden; transition: max-height 0.4s ease, opacity 0.4s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="panel-wrapper">
+0020
+        <div class="panel">
+            <div class="panel-header">
+                <h1>Product Details Panel</h1>
+                <button id="togglePanel" class="toggle-button">Collapse</button>
+            </div>
+            <div id="panelBody" class="panel-body expanded">
+                <p>Welcome to the panel. Initially the panel is expanded and shows all content. Click the button to collapse or expand the panel.</p>
+                <p>This panel is created using HTML, CSS, and JavaScript. The button toggles the panel state while preserving smooth transitions.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="accordion_panel.js"></script>
+</body>
+</html>

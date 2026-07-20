@@ -1,0 +1,34 @@
+/* practices:
+1.  print from 20 - 0 using any loop
+*/
+// Answer 1: Using while loop
+let num = 20;
+while (num >= 0) {
+    console.log(num);
+    num--;
+}
+
+/*
+2. using switch: capture day of the week and display if it's a week day or weekend, 
+    default should display "invalid day, enter a day from Monday - Friday"
+*/
+// Answer 2: Using switch statement
+let day = prompt("Enter a day of the week:");
+day = day.toLowerCase();
+
+switch (day) {
+    case "monday":
+    case "tuesday":
+    case "wednesday":
+    case "thursday":
+    case "friday":
+        console.log(day + " is a weekday");
+        break;
+    case "saturday":
+    case "sunday":
+        console.log(day + " is a weekend");
+        break;
+    default:
+        console.log("Invalid day, enter a day from Monday - Friday");
+}
+
