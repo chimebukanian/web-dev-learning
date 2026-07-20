@@ -42,6 +42,32 @@
         ctx.strokeStyle = 'red'
         // do a fill too :)
         ctx.stroke()
+
+        // bezier curve
+        ctx.beginPath()
+        ctx.moveTo(220, 220)
+        ctx.bezierCurveTo(180, 290, 300, 270, 200, 140)
+        ctx.linewidth = 10
+        ctx.strokeStyle = 'red'
+        ctx.stroke()
+
+        // quadratic curve
+        ctx.beginPath()
+        ctx.moveTo(420, 220)
+        ctx.quadraticCurveTo(500, 120, 600, 220)
+        ctx.lineWidth = 10
+        ctx.strokeStyle = 'green'
+        ctx.stroke()
+
+        // image
+        ctx.beginPath()
+        let myImg = new Image()
+        myImg.src = '/photo/random_1.jpg'
+        myImg.onload = function() {
+            ctx.drawImage(myImg, 100, 100, 100, 100)
+        }
     </script>
 </body>
 </html>
+
+
