@@ -1,4 +1,0 @@
-New practice pages created:
-1. online_store.html + online_store.js - product gallery, detail pop-up, navigation controls, credit card validation, URL history.
-2. fade_label.html + fade_label.js - button toggles label visibility with fade effect.
-3. accordion_panel.html + accordion_panel.js - expandable/collapsible panel with toggle button.
