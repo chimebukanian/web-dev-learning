@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let prom1 = Promise.resolve('hello')
+        let prom2 = Promise.resolve('hello')
+        let prom3 = Promise.reject('hello')
+
+        let promArr = [prom1, prom2, prom3]
+
+        let finalProm = Promise.all(promArr) //re4turn sinngle promise that resolve when all resolve
+        let finalProm2 = Promise.allSettled(promArr) // return single promise that has an array describing the outcome of individual promises
+        let finalProm3 = Promise.any(promArr)
+        let finalProm4 = Promise.race(promArr)
+
+
+        console.log(finalProm2)
+
+        
+
+    </script>
+</body>
+</html>

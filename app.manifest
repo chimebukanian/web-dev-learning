@@ -1,0 +1,12 @@
+CACHE:
+# resources to be cached
+../workplace.jpg
+dragdrop.html
+
+FALLBACK:
+# non-cached resources that couldn't be downloaded
+../download.jfif
+
+NETWORK:
+#resources that needs not be cached
+flexitems.html

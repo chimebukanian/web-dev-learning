@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // abstraction
+        class coffeeMachine {
+            #boilwater () {
+                console.log('boiling water')
+            }
+
+            #brewCoffee() {
+                console.log('coffee brewing...')
+            }
+
+            makeCofffee () {
+                this.#boilwater()
+                this.#brewCoffee()
+                return 'Coffee is ready!'
+            }
+
+
+        }
+
+        let CM = new coffeeMachine()
+
+        console.log(CM.makeCofffee())
+
+        // polymorphism
+        class Bird {
+
+            fly() {
+                return 'the bird is flying'
+            }
+        }
+
+        class Penguin extends Bird {
+            fly() {
+                return "can't fly"
+            }
+        }
+        // inheritance
+        class Animal {
+            constructor(name) {
+                this.name = name
+            }
+
+            eat() {
+                return `${this.name} is eating`
+            }
+        }
+
+        class Dog extends Animal {
+            constructor(name, breed) {
+                super(name) // parent contrustor
+                this.breed = breed
+            }
+        }
+
+        let dog1 = new Dog('bingo', 'rottweiler')
+        console.log(dog1.eat())
+
+        // encapsulation
+        class BankAccount {
+            #balance = 3000 //declare private fields firrst. you can give initial value
+
+            constructor(bal, name) {
+                this.#balance = bal
+                this.owner = name
+            }
+
+            // getter
+            balance() {
+                return this.#balance
+            }
+
+            // setter
+            deposit(amount) {
+                if (!(amount <= 0)) this.#balance += amount
+            }
+
+        }
+
+        let acct1 = new BankAccount(2000, 'chimebuka emmanuel')
+        console.log(acct1.balance())
+        // acct1.#balance = -2
+        acct1.deposit(1200)
+
+        class Car {
+            // when obj is instantiated
+            constructor(brand, topSpeed) {
+                this.brand = brand
+                this.speed = topSpeed
+            }
+
+            // method
+            drive() {
+                return `${this.brand} is moving at ${this.speed} km/hr`
+            }
+
+        }
+
+        let car1 = new Car('tesla', 200)
+
+        car1.speed = 300
+        console.log(car1.speed)
+        console.log(car1.drive())
+    </script>
+</body>
+</html>

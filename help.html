@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IndexedDB Demo</title>
+</head>
+<body>
+
+<script>
+
+let db;
+
+const employeeData = [
+    {
+        name: "John Smith",
+        email: "john@company.com"
+    },
+    {
+        name: "Jill Patrick",
+        email: "jill@company.com"
+    },
+    {
+        name: "Rock Ethan",
+        email: "rock@company.com"
+    },
+    {
+        name: "Daniel Andrew",
+        email: "daniel@company.com"
+    }
+];
+
+const openReq = indexedDB.open("aptechdb", 1);
+
+/*
+|--------------------------------------------------------------------------
+| CREATE DATABASE / OBJECT STORE
+|--------------------------------------------------------------------------
+*/
+openReq.onupgradeneeded = function (event) {
+    db = event.target.result;
+
+    if (!db.objectStoreNames.contains("students")) {
+
+        const store = db.createObjectStore("students", {
+            keyPath: "id",
+            autoIncrement: true
+        });
+
+        store.createIndex("email", "email", {
+            unique: true
+        });
+
+        console.log("students store created");
+    }
+};
+
+/*
+|--------------------------------------------------------------------------
+| DATABASE READY
+|--------------------------------------------------------------------------
+*/
+openReq.onsuccess = function (event) {
+
+    db = event.target.result;
+
+    console.log("Database opened successfully");
+
+    addEmployees();
+};
+
+openReq.onerror = function () {
+    console.error("Failed to open database");
+};
+
+
+/*
+|--------------------------------------------------------------------------
+| ADD EMPLOYEES
+|--------------------------------------------------------------------------
+*/
+function addEmployees() {
+
+    const tx = db.transaction("students", "readwrite");
+
+    const store = tx.objectStore("students");
+
+    for (const employee of employeeData) {
+        store.put(employee);
+    }
+
+    tx.oncomplete = function () {
+        console.log("Employees added");
+
+        getEmployeeById(1);
+
+        getEmployeeByEmail("john@company.com");
+
+        getAllEmployees();
+
+        getAllEmployeesWithCursor();
+
+        updateEmployee(1);
+
+        deleteEmployee(4);
+    };
+
+    tx.onerror = function (event) {
+        console.error("Add transaction failed", event.target.error);
+    };
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| GET BY PRIMARY KEY
+|--------------------------------------------------------------------------
+*/
+function getEmployeeById(id) {
+
+    const tx = db.transaction("students", "readonly");
+
+    const store = tx.objectStore("students");
+
+    const req = store.get(id);
+
+    req.onsuccess = function (event) {
+        console.log("Get By ID:");
+        console.log(event.target.result);
+    };
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| GET BY INDEX
+|--------------------------------------------------------------------------
+*/
+function getEmployeeByEmail(email) {
+
+    const tx = db.transaction("students", "readonly");
+
+    const store = tx.objectStore("students");
+
+    const index = store.index("email");
+
+    const req = index.get(email);
+
+    req.onsuccess = function (event) {
+        console.log("Get By Email:");
+        console.log(event.target.result);
+    };
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| OPTION 1: GET ALL
+|--------------------------------------------------------------------------
+*/
+function getAllEmployees() {
+
+    const tx = db.transaction("students", "readonly");
+
+    const store = tx.objectStore("students");
+
+    const req = store.getAll();
+
+    req.onsuccess = function (event) {
+
+        console.log("All Employees (getAll)");
+
+        console.table(event.target.result);
+    };
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| OPTION 2: CURSOR
+|--------------------------------------------------------------------------
+*/
+function getAllEmployeesWithCursor() {
+
+    const tx = db.transaction("students", "readonly");
+
+    const store = tx.objectStore("students");
+
+    const req = store.openCursor();
+
+    const employees = [];
+
+    req.onsuccess = function (event) {
+
+        const cursor = event.target.result;
+
+        if (cursor) {
+
+            employees.push(cursor.value);
+
+            cursor.continue();
+
+        } else {
+
+            console.log("All Employees (Cursor)");
+
+            console.table(employees);
+        }
+    };
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| UPDATE
+|--------------------------------------------------------------------------
+*/
+function updateEmployee(id) {
+
+    const tx = db.transaction("students", "readwrite");
+
+    const store = tx.objectStore("students");
+
+    const getReq = store.get(id);
+
+    getReq.onsuccess = function (event) {
+
+        const employee = event.target.result;
+
+        if (!employee) {
+            console.log("Employee not found");
+            return;
+        }
+
+        employee.name = "Samuel Emmanuel";
+
+        const updateReq = store.put(employee);
+
+        updateReq.onsuccess = function () {
+            console.log("Record updated successfully");
+        };
+    };
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| DELETE
+|--------------------------------------------------------------------------
+*/
+function deleteEmployee(id) {
+
+    const tx = db.transaction("students", "readwrite");
+
+    const store = tx.objectStore("students");
+
+    const deleteReq = store.delete(id);
+
+    deleteReq.onsuccess = function () {
+        console.log(`Record ${id} deleted successfully`);
+    };
+}
+
+</script>
+
+</body>
+</html>
