@@ -1,0 +1,52 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            background:red;
+            width: 200px;
+            height: 200px;
+            border-top: 10px solid gold;
+            transition: width 2s, height 4s, background-color 3s, transform 2s;
+            /* transition-property: width;
+            transition-duration: 2s; */
+            transition-timing-function: ease-in-out;
+            transition-delay: 1s;
+            
+        }
+
+        div:hover {
+            width: 500px;
+            height: 400px;
+            background: green;
+            transform: rotate(180deg);
+        }
+
+        button{
+            transition: background 2s, transform 2s;
+        }
+
+        button:hover{
+            background: green;
+            transform: scale(1.8);
+        }
+    </style>
+ </head>
+ <body>
+    <h2>CSS Transitions</h2>
+
+    <button>Click!</button>
+    <div style="color: white; font-weight:bold">A word in it</div>
+    
+    <figure>
+        <img src="download.jfif" width="200" height="200" alt="this is a landscape image">
+        <figcaption style="font-size: 20px;">LandScape</figcaption>
+    </figure>
+
+
+    <a href="download.jfif"><img src="download.jfif" width="200" height="200"></a>
+ </body>
+ </html>
