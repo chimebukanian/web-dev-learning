@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Async/Await </h2>
+    <script>
+        // use tradition promise syntax
+        async function getData() {
+            try { // try these operations
+            let resp = await fetch('https:/jsonplaceholder.typicode.com/todos/1')
+            if (!resp.ok) {
+                throw new Error('somethingh went wrong with your request!')
+            }
+
+            let data = await resp.json() //actual data
+            // return is the resolved value of a promise
+            return data
+            } catch(err) {
+                console.error('error occured: ', err.message)
+            }
+        }
+
+        let mainData
+
+     getData() //set 
+        .then((data) => {
+            console.log(data)
+            
+        })
+        
+        // top-level await on the other hand alliows us use "await" without being in an async function
+
+        class Humans {
+            static numOfFingers; // static prop
+            static eat() {
+                return 'human is eating'
+            }
+
+            static {
+                this.numOfFingers = 10
+            }
+        }
+        
+        console.log(Humans.numOfFingers) // static props are only accessible from the class directly
+
+        // Object.hasOwn() identify object belonging specifically to that object and not inherited/via prototype
+        let myObj = {name: 'chuks', complexion: 'dark'}
+
+        // myObj.toString()
+        console.log(Object.hasOwn(myObj, 'name')) // true
+        console.log(Object.hasOwn(myObj, 'toString')) // true
+        console.log(Object.hasOwn(myObj, 'aptech')) // false
+        
+        const regex = /l+/d // look for l one or more 
+        let text = 'Hellllo'
+        let match = regex.exec(text)
+
+        console.log(match.index) // 2
+        console.log(match.indices) 
+
+        const myRegExp = /foo\d+/dg;
+        const str = 'foo123 bar456 foo789'
+        let matches = myRegExp.exec(str)
+
+   
+        for (const match of str.matchAll(myRegExp)) {
+            console.log(match)
+        }
+        
+
+    </script>
+</body>
+</html>
